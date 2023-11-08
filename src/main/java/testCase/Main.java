@@ -8,12 +8,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class Main {
     public static void main(String[] args) {
 
-
         System.setProperty("webdriver.chrome.driver","C:\\Users\\M249SAW\\IdeaProjects\\Selenium\\ChromeDriver\\chromedriver.exe");
         ChromeOptions options=new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://demoqa.com/books");
+        HomePage homePage=new HomePage(driver);
+        homePage.clickLogin();
 
         driver.findElement(By.id("see-book-Git Pocket Guide")).click();
         String isbn1 = driver.findElement(By.id("userName-value")).getText();
