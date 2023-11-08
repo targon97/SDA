@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.HomePage;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +15,8 @@ public class Main {
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://demoqa.com/books");
+        HomePage homePage=new HomePage(driver);
+        homePage.clickLogin();
 
         driver.findElement(By.id("see-book-Git Pocket Guide")).click();
         String isbn1 = driver.findElement(By.id("userName-value")).getText();
