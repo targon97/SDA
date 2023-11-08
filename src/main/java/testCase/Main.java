@@ -1,11 +1,9 @@
-
+package testCase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pages.HomePage;
-import pages.LoginPage;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,21 +14,14 @@ public class Main {
         options.addArguments("--remote-allow-origins=*");
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://demoqa.com/books");
-        HomePage homePage=new HomePage(driver);
-        homePage.clickLogin();
 
-        LoginPage loginPage=new LoginPage(driver);
-        loginPage.enterUserName();
-        loginPage.enterPassword();
-
-      
         driver.findElement(By.id("see-book-Git Pocket Guide")).click();
         String isbn1 = driver.findElement(By.id("userName-value")).getText();
-        driver.get("https://demoqa.com/books");
+        driver.findElement(By.id("addNewRecordButton")).click();
 
         driver.findElement(By.id("see-book-Learning JavaScript Design Patterns")).click();
         String isbn2 = driver.findElement(By.id("userName-value")).getText();
-        driver.get("https://demoqa.com/books");
+        driver.findElement(By.id("addNewRecordButton")).click();
 
         driver.findElement(By.id("see-book-Designing Evolvable Web APIs with ASP.NET")).click();
         String isbn3 = driver.findElement(By.id("userName-value")).getText();
