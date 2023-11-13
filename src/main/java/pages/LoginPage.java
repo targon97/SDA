@@ -18,5 +18,9 @@ public class LoginPage {
     public void enterPassword(){
         driver.findElement(password).sendKeys("Password@123");
     }
+    By loginButton=By.id("login");
+    public void clickLogin() {
+        driver.findElement(loginButton).click();
+    }
 
 }

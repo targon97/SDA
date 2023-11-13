@@ -1,11 +1,16 @@
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,10 +25,23 @@ public class Main {
         homePage.clickLogin();
 
         LoginPage loginPage=new LoginPage(driver);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(10,document.body.scrollHeight)", "");
         loginPage.enterUserName();
         loginPage.enterPassword();
 
-      
+        loginPage.clickLogin();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+
+        DashboardPage dashboardPage=new DashboardPage(driver);
+        System.out.println(dashboardPage.getLoggedInUser());
+
+
+
+
+        /*
+        driver.get("https://demoqa.com/books");
+
         driver.findElement(By.id("see-book-Git Pocket Guide")).click();
         String isbn1 = driver.findElement(By.id("userName-value")).getText();
         driver.get("https://demoqa.com/books");
@@ -67,7 +85,7 @@ public class Main {
         System.out.println("Numer ISBN książki Programming JavaScript Applications to " + isbn6);
         System.out.println("Numer ISBN książki Eloquent JavaScript, Second Edition to " + isbn7);
         System.out.println("Numer ISBN książki Understanding ECMAScript 6 to " + isbn8);
-
+*/
 
 
 
