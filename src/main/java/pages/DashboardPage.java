@@ -3,14 +3,19 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class DashboardPage {
     WebDriver driver;
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
-    By loggedInUser = By.id("userName-value");
+    @FindBy(id = "userName-value")
+    WebElement loggedInUser;
+
     public String getLoggedInUser(){
-      return driver.findElement(loggedInUser).getText();
+      return loggedInUser.getText();
     }
 }
