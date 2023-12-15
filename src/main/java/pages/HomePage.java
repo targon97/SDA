@@ -13,14 +13,8 @@ public class HomePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(id="login")
-    WebElement loginButton;
-
-    public void clickLogin() {
-        loginButton.click();
-    }
-    public void navigateToHomePage(){
-        driver.get("https://demoqa.com/books");
+        public void navigateToHomePage(){
+        driver.get("https://www.way2automation.com/angularjs-protractor/banking/#/login");
         driver.manage().window().maximize();
     }
 }

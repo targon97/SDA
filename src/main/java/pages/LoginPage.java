@@ -1,32 +1,35 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+
+import java.time.Duration;
+
 
 public class LoginPage {
     WebDriver driver;
-    public LoginPage(WebDriver driver){
-        this.driver=driver;
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
 
     }
-    @FindBy(id = "userName")
-    WebElement userName;
-    @FindBy(id = "password")
-    WebElement password;
-    @FindBy(id = "login")
+
     WebElement login;
 
-    public void enterUserName(){
-        userName.sendKeys("gunjankaushik");
-    }
-    public void enterPassword(String password){
-        this.password.sendKeys("Password@123");
-    }
     public void clickLogin() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        login = driver.findElement(By.className("btn-primary"));
         login.click();
     }
 
+    WebElement selectuser;
+
+    public void clickSelectUser() {
+        driver.findElement(By.xpath("//option[@value='1']")).click();
+        driver.findElement(By.className("btn-default")).click();
+    }
 }

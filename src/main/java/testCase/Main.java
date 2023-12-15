@@ -16,7 +16,6 @@ public class Main {
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://demoqa.com/books");
         HomePage homePage=new HomePage(driver);
-        homePage.clickLogin();
 
         driver.findElement(By.id("see-book-Git Pocket Guide")).click();
         String isbn1 = driver.findElement(By.id("userName-value")).getText();
